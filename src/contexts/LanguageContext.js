@@ -1,5 +1,4 @@
 import React, {createContext, Component } from 'react'
-
 export const LanguageContext = createContext();
 export class LanguageProvider extends Component {
      constructor(props){
@@ -22,3 +21,8 @@ export class LanguageProvider extends Component {
         )
     }
 }
+export const withLanguageContext = Component=>props=>(
+    <LanguageContext.Consumer>
+        {value => <Component LanguageContext = {value} {...props}/>}
+    </LanguageContext.Consumer>
+)
